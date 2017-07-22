@@ -14,7 +14,15 @@ dependencies {
 }
 
 task hello
+task world
+task helloWorld{
+    dependsOn = [hello, world]
+}
 
 hello{
-    println "hello world"
+    print "hello"
+}
+
+world{
+    print "world"
 }

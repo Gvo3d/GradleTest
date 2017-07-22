@@ -2,8 +2,9 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="GradleTest_main" target="1.5" />
-      <module name="GradleTest_test" target="1.5" />
+      <module name="GradleTest_main" target="1.8" />
+      <module name="GradleTest_src" target="1.8" />
+      <module name="GradleTest_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

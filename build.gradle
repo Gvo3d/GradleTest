@@ -1,29 +1,55 @@
 group 'org.yakimovdenis'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath gradleApi()
+        classpath("com.hazelcast:hazelcast:3.9-EA")
+        classpath("com.hazelcast:hazelcast-client:3.9-EA")
+    }
+}
 
-sourceCompatibility = 1.5
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
+mainClassName = "project.App"
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'com.hazelcast', name: 'hazelcast', version: '3.9-EA'
+    compile group: 'com.hazelcast', name: 'hazelcast-client', version: '3.9-EA'
 }
 
 task hello
 task world
-task helloWorld{
+task helloWorld {
     dependsOn = [hello, world]
 }
 
-hello{
+hello {
     print "hello"
 }
 
-world{
+world {
     dependsOn << hello
     print "world"
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'resources'
+            include 'hazelcast.xml'
+        }
+    }
 }

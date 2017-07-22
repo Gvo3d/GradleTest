@@ -24,5 +24,6 @@ hello{
 }
 
 world{
+    dependsOn << hello
     print "world"
 }
